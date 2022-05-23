@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css\Delete Page CSS.css">
+        <script src="js\Delete Page JS.js"></script>
+        <meta charset="utf-8">
+        <title>Delete a laboratory</title>
+        <meta name="describtion" content="This is our Laporatory"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    </head>
+    <body>  
+        <header>
+            <a href="#" class="logo">index</a>
+            <form style="text-align: center;" class="search">
+                <label for="gsearch">
+                    Search
+                </label>
+                <input type="search" id="gsearch" name="gsearch" >
+            </form>
+            <nav class ="navi">
+                <a href="Home Page.html">Home</a>
+      <a href="Add a laboratory html.html">Add lab</a>
+      <a href="Update.html">Update</a>
+      <a href="Delete a Laboratory.html">Delete</a>
+      <a href="Add a pc.html">Add PC</a>
+      <a href="pcs repair.html">Repair PC</a>
+      <a href="report problem page.html">Report</a>
+      <a href="about.html">About</a>
+            </nav>
+        </header>
+        <form class="form2"  name="form" onsubmit="validateForm()" method="post">
+            <h1>Delete a laboratory</h1>
+            <label>Laboratory Name</label>
+            <input type="text" name="Laboratory's Name" placeholder="Laboratory's Name" >
+            <div id="error"></div>
+            <br>
+            <label>Laboratory ID</label>
+            <input type="text" name="Laboratory's ID" placeholder="Laboratory's ID" >
+            <div id="error"></div>
+            <br>
+            <button type="submit" onsubmit= AlertFunction() value="submit">Delete</button>
+        </form>
+        
+    </body>
+</html>

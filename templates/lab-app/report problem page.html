@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>report problem</title>
+    <meta name="describtion" content="This is our Laporatory" />
+    <link rel="stylesheet" type="text/css" href="css\report problem css.css">
+    <script src="js\report problem js.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo">index</a>
+        <form style="text-align: center;" class="search">
+            <label for="gsearch">
+                Search
+            </label>
+            <input type="search" id="gsearch" name="gsearch">
+        </form>
+        <nav class="navi">
+            <a href="Home Page.html">Home</a>
+      <a href="Add a laboratory html.html">Add lab</a>
+      <a href="Update.html">Update</a>
+      <a href="Delete a Laboratory.html">Delete</a>
+      <a href="Add a pc.html">Add PC</a>
+      <a href="pcs repair.html">Repair PC</a>
+      <a href="report problem page.html">Report</a>
+      <a href="about.html">About</a>
+        </nav>
+    </header>
+    <body>
+        <h1>Report</h1>
+        <form onsubmit="AlertFunction()" name="form">
+            <p><label>
+                    Laboratory ID :</label>
+                <input type="text" id="labID" name="lab ID" placeholder="Laboratory ID">
+            </p>
+            <p><label >
+                    PC number :
+                    <input type="text" id="PCnum" name="PC num" placeholder="PC number"></label></p>
+            <p>
+                <p>please describe the problem here:</p>
+
+                <input type="text" class="textarea" name="description" placeholder="Enter details here...">
+                     </p>
+            <div class="not">
+                <p>What is the kind of the problem </p>
+                <input type="radio" id="soft" name="problem" value="software">software
+                <input type="radio" id="hard" name="problem" value="hardware">hardware
+            </div>
+            <p>
+                <lable for="date ">please enter the date :
+                </lable>
+                <input type="date" id=" date " name="dates">
+            </p>
+            <div class="not"><input type="submit" value="Submit" ></th></div>
+        </form>
+    </body>
+</html>

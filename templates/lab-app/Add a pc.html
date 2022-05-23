@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="js\Add a pc js.js"></script>
+    <meta charset="utf-8">
+    <title>Add a pc</title>
+    <meta name="describtion" content="This is our Laporatory"/>
+    <link rel="stylesheet" type="text/css" href="css\Add a pc.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+</head>
+<body>
+<header>
+    <a href="#" class="logo">index</a>
+    <form style="text-align: center;" class="search">
+        <label for="gsearch">
+            Search
+        </label>
+        <input type="search" id="gsearch" name="gsearch">
+    </form>
+    <nav class ="navi">
+        <a href="Home Page.html">Home</a>
+      <a href="Add a laboratory html.html">Add lab</a>
+      <a href="Update.html">Update</a>
+      <a href="Delete a Laboratory.html">Delete</a>
+      <a href="Add a pc.html">Add PC</a>
+      <a href="pcs repair.html">Repair PC</a>
+      <a href="report problem page.html">Report</a>
+      <a href="about.html">About</a>
+    </nav>
+</header>
+    <head><h1>Add a PC to a Laboratory</h1></head>
+    <body>
+        <form onsubmit="myFunction()" name="form">
+        <p><label>Enter PC ID</label>
+        <input class="data" type="text" name="PC ID"  maxlength="8" placeholder="PC ID"></p>
+        <p><label>Enter Laporatory ID</label>
+        <input class="data" type="text" name="Laporatory ID"  maxlength="8" placeholder="Laporatory ID"></p>
+        <div class="not">
+            Status: <input type="radio" name="status"> Active
+            <input type="radio" name="status">Under maintenance
+        </div>
+        <div class="not"><input type="submit" value="Add" ></th></div>
+    </form>
+    </body>
+</html>
