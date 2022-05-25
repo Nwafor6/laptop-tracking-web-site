@@ -1,0 +1,94 @@
+{% extends 'partials/base.html'%}
+
+{% block content%}
+
+<style>
+.lab-container{
+	padding: 3em;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+#t01 {
+  width: 100%;    
+  background-color: #f1f1c1;
+}
+</style>
+
+
+	<div class="lab-container">
+		<div class="row">
+			<div class="col-sm-12 col-md-6">
+				<h6>List of PCs in this Labouratory</h6>
+				<p>Click <span class="text-danger">Edit</span> if Pc is now repaired</p>
+				<p>Not the <span class="text-danger">Edit</span> is only present if <span class="text-danger">PC Repaired is False</span></p>
+				<table id="t01">
+				  <tr>
+				    <th>Lab ID</th>
+				    <th>PC ID</th>
+				    <th>PC Name</th> 
+				    <th>PC Repaired</th>
+				  </tr>
+				  {% for pc in pcs%}
+				  <tr>
+				    <td>{{pc.labouratory.pk}}</td>
+				    <td>{{pc.pk}}</td>
+				    <td>{{pc.pc_name}}</td>
+				    <td>{{pc.repaired}}</td>
+				    {% if pc.repaired == False%}
+				    <td><a href="{% url 'update-pc' pc.slug%}">Edit</a></td>
+				    {% endif%}
+				  {% endfor%} 
+				</table>			
+			</div>
+			<div class="col-sm-12 col-md-6">
+				<h6>Report Filed to the Lobouratory</h6>
+				<p>Click labouratory name to see full details of the labouratory</p>
+				<table id="t01">
+				  <tr>
+				    <th>Lab ID</th>
+				    <th>No of PC</th>
+				    <th>Problem Desc</th> 
+				    <th>Date</th>
+				  </tr>
+				  {% for report in report%}
+				  <tr>
+				    
+				    <td>{{report.labouratory.pk}}</td>
+				    <td>{{report.Number_of_pc}}</td>
+				    <td>{{report.pc_problem | slice:":20" }}.....</td>
+				    <td>{{report.problem_type}}</td>
+				    <td>{{report.date}}</td>
+				  </tr>
+				  {% endfor%}
+				</table>
+			</div>
+		</div>
+		
+	</div>
+
+
+
+
+<!-- <div class="container">
+	<h3>Welcome to {{report.labouratory}} </h3>
+<p>This are the list of all PCs related to this Labouratory</p>
+{% for pc in pcs%}
+
+	{{pc}}
+
+{%endfor%}
+<p>Once click on the Pc name to see more about the PC</p>
+	{% for report in report%}
+
+	{%endfor%}
+
+	<a href="{% url 'report-pc'%}">{{report}}</a>
+</div>
+ -->
+{%endblock%}

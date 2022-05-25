@@ -1,49 +1,32 @@
+{%load static%}
 <html>
-    <!--Ahmed Shahine Hani Hassan
-                20200019
-                S9
-                Ahmed Mahmoud selim Abdallah
-                20210622
-                S9
-                Mohamed Anwar Abd Elhady Mohamed
-                20200430
-                S9
-                Ahmed Sameh Ahmed
-                20200015
-                S9
-                Ahmed Hassan Ahmed Foad
-                20200010
-                S9
-                Ahmed Abdelkarim Ahmed 
-                20201010
-                S10-->
 <head>
     <meta charset="utf-8">
     <title>about</title>
     <meta name="describtion" content="This is our Laporatory" />
-    <link rel="stylesheet" type="text/css" href="css\about css.css">
-    <script src="report problem js.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css\about css.css'%}">
+    <script src="{% static 'report problem js.js'%}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
 </head>
 <body>
     <header>
         <a href="#" class="logo">index</a>
-        <form style="text-align: center;" class="search">
-            <label for="gsearch">
-                Search
-            </label>
-            <input type="search" id="gsearch" name="gsearch">
-        </form>
-        <nav class="navi">
-            <a href="Home Page.html">Home</a>
-      <a href="Add a laboratory html.html">Add lab</a>
-      <a href="Update.html">Update</a>
-      <a href="Delete a Laboratory.html">Delete</a>
-      <a href="Add a pc.html">Add PC</a>
-      <a href="pcs repair.html">Repair PC</a>
-      <a href="report problem page.html">Report</a>
-      <a href="about.html">About</a>
-        </nav>
+    <form style="text-align: center;" class="search" action="{% url 'lab'%}">
+        <label for="gsearch">
+            Search
+        </label>
+        <input type="search" id="gsearch" name="q" >
+    </form>
+    <nav class ="navi">
+        <a href="/">Home</a>
+      <a href="{% url 'create-lab'%}">Add lab</a>
+      <a href="{% url 'lab'%}">View labs</a>
+      <a href="{% url 'pcs'%}">see pcs</a>
+      <a href="{% url 'create-pc'%}">Add PC</a>
+      <a href="{% url 'report-pc'%}">Report</a>
+      <a href="{% url 'about'%}">About</a>
+      <a href="{% url 'report-list'%}">All-reports</a>
+    </nav>
     </header>
 <head>
     <title>

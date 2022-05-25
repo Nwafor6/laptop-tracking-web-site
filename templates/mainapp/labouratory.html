@@ -1,0 +1,55 @@
+{%extends 'partials/base.html'%}
+
+
+{%block content%}
+
+<style>
+body{
+	background-color: white;
+}
+.lab-container{
+	padding: 3em;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+#t01 {
+  width: 100%;    
+  background-color: #f1f1c1;
+}
+</style>
+	
+	
+
+	<div class="lab-container">
+		<h6>Available Labouratories</h6>
+		<p>Click labouratory name to see full details of the labouratory</p>
+		<table id="t01">
+		  <tr>
+		    <th>Labouratory Name</th>
+		    <th>Labouratory ID</th>
+		    <th>Building Capicity</th> 
+		    <th>Floor Number</th>
+		    <th>Labouratory Status</th>
+		    <th>Update Data</th>
+		  </tr>
+		  {% for lab in labs%}
+		  <tr>
+		    <td><a href="{% url 'update-lab' lab.slug%}">{{lab.lab_name}}</a></td>
+		    <td>{{lab.pk}}</td>
+		    <td>{{lab.building_num}}</td>
+		    <td>{{lab.floor_num}}</td>
+		    <td>{{lab.status}}</td>
+		    <td><a href="{% url 'update-lab' lab.slug%}">Edit</a> | <a href="{% url 'delete-lab' lab.slug%}">Delete Lab</a> | <a href="{% url 'report' lab.slug%}">Report Pc</td>
+		  </tr>
+		  {% endfor%}
+		 
+		</table>
+	</div>
+
+{% endblock%}

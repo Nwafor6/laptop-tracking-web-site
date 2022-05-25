@@ -6,6 +6,7 @@
     margin:0;
     padding: 0;
 }
+
 header{
     background-color:#04049a;
     display: flex;
@@ -96,3 +97,12 @@ input[type=submit]:hover{
 .bb{
     text-align: center;
 }
+/*style for labouratory.html*/
+
+.lab-container{
+    
+}
+
+
+
+/*end style*/

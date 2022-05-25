@@ -8,13 +8,15 @@ class LabouratoryAdmin(admin.ModelAdmin):
 	prepopulated_fields={'slug': ('lab_name',)}
 
 class PCAdmin(admin.ModelAdmin):
-	list_display=['labouratory', 'pc_name', 'status']
+	list_display=['labouratory', 'pc_name', 'repaired']
 	prepopulated_fields={'slug': ('pc_name',)}
 
 class ReportPcAdmin(admin.ModelAdmin):
-	list_display=['pc', 'pc_problem', 'date', 'repaired']
+	list_display=['labouratory','Number_of_pc', 'pc_problem','problem_type', 'date']
 	
 
 admin.site.register(Labouratory, LabouratoryAdmin)
 admin.site.register(PC, PCAdmin)
 admin.site.register(ReportPc, ReportPcAdmin)
+
+

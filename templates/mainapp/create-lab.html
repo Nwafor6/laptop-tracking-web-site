@@ -1,0 +1,48 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="{%static 'js\Add a laboratory js.js'%}"></script>
+    <meta charset="utf-8">
+    <title>Add a Laporatory</title>
+    <meta name="describtion" content="This is our Laporatory"/>
+    <link rel="stylesheet" type="text/css" href="{%static 'css\Add a laboratory css.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+
+</head>
+<body>
+<header>
+       <a href="#" class="logo">index</a>
+    <form style="text-align: center;" class="search" action="{% url 'lab'%}">
+        <label for="gsearch">
+            Search
+        </label>
+        <input type="search" id="gsearch" name="q" >
+    </form>
+    <nav class ="navi">
+        <a href="/">Home</a>
+      <a href="{% url 'create-lab'%}">Add lab</a>
+      <a href="{% url 'lab'%}">View labs</a>
+      <a href="{% url 'pcs'%}">see pcs</a>
+      <a href="{% url 'create-pc'%}">Add PC</a>
+      <a href="{% url 'report-pc'%}">Report</a>
+      <a href="{% url 'about'%}">About</a>
+      <a href="{% url 'report-list'%}">All-reports</a>
+    </nav>
+</header>
+<form name="form" onsubmit="AlertFunction()" method="POST" class="form">
+  {%csrf_token%}
+      <div style="display: flex; flex-wrap: wrap;padding:0.3em 4em 0.3em 4em; width: 50%;" >
+        {{form}}
+        {{radio.tag}}
+      </div>
+      <div class="bb"><input type="submit" value="save"></div>
+  </form>
+  
+
+ <!--  <script>
+    function postData = fetch("")
+  </script> -->
+
+  </body>
+  </html>

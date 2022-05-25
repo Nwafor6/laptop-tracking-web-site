@@ -1,45 +1,73 @@
+
+{% load static%}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="js\Add a pc js.js"></script>
+    <script src="{% static 'js\Add a pc js.js'%}"></script>
     <meta charset="utf-8">
     <title>Add a pc</title>
     <meta name="describtion" content="This is our Laporatory"/>
-    <link rel="stylesheet" type="text/css" href="css\Add a pc.css">
+    <link rel="stylesheet" type="text/css" href="{%static 'css\Add a pc.css'%}">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
 </head>
 <body>
 <header>
-    <a href="#" class="logo">index</a>
-    <form style="text-align: center;" class="search">
+       <a href="#" class="logo">index</a>
+    <form style="text-align: center;" class="search" action="{% url 'lab'%}">
         <label for="gsearch">
             Search
         </label>
-        <input type="search" id="gsearch" name="gsearch">
+        <input type="search" id="gsearch" name="q" >
     </form>
     <nav class ="navi">
-        <a href="Home Page.html">Home</a>
-      <a href="Add a laboratory html.html">Add lab</a>
-      <a href="Update.html">Update</a>
-      <a href="Delete a Laboratory.html">Delete</a>
-      <a href="Add a pc.html">Add PC</a>
-      <a href="pcs repair.html">Repair PC</a>
-      <a href="report problem page.html">Report</a>
-      <a href="about.html">About</a>
+        <a href="/">Home</a>
+      <a href="{% url 'create-lab'%}">Add lab</a>
+      <a href="{% url 'lab'%}">View labs</a>
+      <a href="{% url 'pcs'%}">see pcs</a>
+      <a href="{% url 'create-pc'%}">Add PC</a>
+      <a href="{% url 'report-pc'%}">Report</a>
+      <a href="{% url 'about'%}">About</a>
+      <a href="{% url 'report-list'%}">All-reports</a>
     </nav>
 </header>
-    <head><h1>Add a PC to a Laboratory</h1></head>
     <body>
-        <form onsubmit="myFunction()" name="form">
-        <p><label>Enter PC ID</label>
-        <input class="data" type="text" name="PC ID"  maxlength="8" placeholder="PC ID"></p>
-        <p><label>Enter Laporatory ID</label>
-        <input class="data" type="text" name="Laporatory ID"  maxlength="8" placeholder="Laporatory ID"></p>
-        <div class="not">
-            Status: <input type="radio" name="status"> Active
-            <input type="radio" name="status">Under maintenance
-        </div>
-        <div class="not"><input type="submit" value="Add" ></th></div>
-    </form>
+   
+          <form id="add_pc_form" name="form" method="POST">{%csrf_token%}
+          <div class="form-group " >
+            <div class="container jumbotron" >
+                <h1 class="text-center">Add a PC</h1>
+                {{form |crispy }}
+                <!-- {{form.pc_name }}
+                {{form.repaired }} -->
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+              
+          </div>
+        </form>
+
+
+       <!--  <script>
+            document.getElementById("add_pc_form").addEventListener("submit", function(e){
+                e.preventDefault()
+                console.log(pc_name)
+                $.ajax({
+                    type:"POST",
+                    url: "{% url 'create-pc' %}",
+                    data: $("#add_pc_form").serialize(),
+                    datatype: "json",
+                    success: function(data){
+                        data.pc_name = ""
+                    }
+                })
+            })
+        </script> -->
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>  -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     </body>
 </html>
+<!-- style="display:flex; flex-direction: column; width: 60%;" -->

@@ -13,13 +13,13 @@ class Labouratory(models.Model):
 
 
 	user=models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
-	lab_name=models.CharField(max_length=250, help_text='Note:Labouratory name must be unique!!')
-	slug=models.SlugField(unique=True)
-	building_num=models.PositiveSmallIntegerField(help_text='Labouratory Building umber',default=0)
-	floor_num=models.PositiveSmallIntegerField(help_text='Labouratory floor number', default=1)
-	capacity=models.PositiveIntegerField(help_text='Labouratory capacity', default=0)
-	total_pc=models.PositiveIntegerField(help_text='Number of PCs in the Labouratory', default=0)
-	chairs=models.PositiveIntegerField(help_text='Number of chairs in the Labouratory',default=0)
+	lab_name=models.CharField(max_length=250)
+	slug=models.SlugField()
+	building_num=models.PositiveSmallIntegerField(default=0)
+	floor_num=models.PositiveSmallIntegerField(default=1)
+	capacity=models.PositiveIntegerField(default=0)
+	total_pc=models.PositiveIntegerField( default=0)
+	chairs=models.PositiveIntegerField(default=0)
 	status=models.CharField(max_length=20, choices=Labouratory_status)
 
 	def __str__(self):
@@ -32,18 +32,14 @@ class Labouratory(models.Model):
 
 class PC(models.Model):
 
-	Pc_Status=[
-		('Repaired', 'Repaired'),
-		('Damaged', 'Damaged')
-	]
-	
 	labouratory=models.ForeignKey(Labouratory, on_delete=models.CASCADE)
 	pc_name=models.CharField(max_length=100)
-	slug=models.SlugField(unique=True)
-	status=models.CharField(max_length=10, choices=Pc_Status)
+	slug=models.SlugField()
+	repaired=models.BooleanField()
+	
 
 	def __str__(self):
-		return f"{self.pc_name} | {self.pc_name}"
+		return f"{self.pc_name}"
 
 	def save(self, *args, **kwargs):
 		if not self.slug:
@@ -51,10 +47,16 @@ class PC(models.Model):
 		super(PC, self).save(*args, **kwargs)
 
 class ReportPc(models.Model):
-	pc=models.ForeignKey(PC, on_delete=models.CASCADE)
+	Pro_type=[
+		('Hardware', 'Hardware'),
+		('Software', 'Software')
+	]
+	labouratory=models.ForeignKey(Labouratory, on_delete=models.CASCADE)
+	Number_of_pc=models.PositiveIntegerField(default=1)
 	pc_problem=models.TextField(blank=True)
+	problem_type=models.CharField(max_length=10, choices=Pro_type)
 	date=models.DateTimeField()
-	repaired=models.BooleanField(default=False)
+	
 
 	def __str__(self):
-		return f"{self.pc_problem} | {self.repaired}"
+		return f"{self.pc_problem}"
